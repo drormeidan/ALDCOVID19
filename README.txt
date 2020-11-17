@@ -1,12 +1,43 @@
 The simulations accompanying the arXiv paper in https://arxiv.org/abs/2004.01453 were
-written in Matlab. There are two files:
-CM4.m		Contains the ODEs and solves them numerically (forward Euler method);
-CovidModel4.m	Sets parameters, calls CM4.m and creates the various plots.
+written in Matlab. 
 
+The codes was seperated to three folders:
+Model: Contain producing codes of figures relate to the model without Data Analysis.
+	covidmodel5.m:   
+		Producing Main Figure, PWQ and panel (n) and (o) in Fig.3.
+	
+	covidmodel5_defectors.m:
+		Producing Defectors figure.
+
+	covidmodel5_spi.m:
+		Producing Selective Isolation figure.
+
+	covidmodel5_tests.m:
+		Producing Test Figure.
+
+	BA_generator_fast.m:
+		Generate ER or SF network with households cliques.
+
+	temporalmatrix.m:
+		Generate the temporal links of the network.
+
+	closeS.m/closeS_spi.m:
+		Isolated houeholds and filter the outdoor temporal links relative to quarantine strategies. 
+
+DataAnalysis:
+	estBeta.m:
+		Estimate the beta parameter and produciong DataAnalysis figure. 
+
+Grid:
+	Grid_TinTout_AlphaBeta.m:
+		Calculate grid of alpha and beta where given T_in and T_out values (with option to plots).
+	closeS_grid.m:
+		closeS version to grid.
+
+Notes:
 As a rule, variable names are identical in the paper and the code. Variables not
-appearing in the paper are documneted in the beginning of CM4.m.
+appearing in the paper are documneted in comment in their first instance.
 
-Parameters:
-[p_NS,p_M,p_S,p_C,p_HR,p_HD,p_VR,p_VD] = [0.3,0.78,0.14,0.08,0.85,0.15,0.5,0.5] % transition probabilities
-[P1,P2,P3,P4] = [4.41,11.04,3.31,5.52] %scale parameters of weibull functions.
-[P1,P2,P3,P4] = [1.47,1.47,1.47,1.47]  %shape parameters of weibull functions.
+The codes need the machine learning and statistics toolbox of Matlab.
+Some of them used the parallel computing toolbox.
+
